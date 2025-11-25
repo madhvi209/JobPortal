@@ -18,7 +18,8 @@ const Job = ({ job }) => {
     }
 
     return (
-        <div className='p-5 rounded-md shadow-xl bg-white border border-gray-100 w-full max-w-xs mx-auto sm:max-w-full md:max-w-md lg:max-w-lg flex flex-col'>
+        <div className='p-5 rounded-md shadow-xl bg-white border border-gray-100 w-full max-w-full mx-auto flex flex-col 
+            sm:max-w-full md:max-w-md lg:max-w-lg'>
             {/* Responsive header: stack on mobile, row on larger */}
             <div className='flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between'>
                 <p className='text-sm text-gray-500'>
