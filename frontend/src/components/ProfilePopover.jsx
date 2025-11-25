@@ -12,13 +12,14 @@ import { toast } from "sonner"
 import { useDispatch, useSelector } from "react-redux"
 import { setAuthUser } from "@/redux/authSlice"
 
+
 export function ProfilePopover() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { authUser } = useSelector(store => store.auth);
     const logoutHandler = async () => {
         try {
-            const res = await axios.get("https://jobportal-youtube.onrender.com/api/v1/user/logout", { withCredentials: true });
+            const res = await axios.get(`https://jobportal-35u8.onrender.com/api/v1/user/logout`, { withCredentials: true });
             
             if (res.data.success) {
                 dispatch(setAuthUser(null));
