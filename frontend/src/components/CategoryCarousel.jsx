@@ -31,10 +31,16 @@ export function CategoryCarousel() {
                 {category.map((item, index) => (
                     <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                         <div className="p-1">
-                            <Button onClick={() => {
-                                dispatch(setSearchText(item));
-                                navigate("/browse");
-                            }} variant="outline" className="rounded-full">{item}</Button>
+                            <Button
+                                onClick={() => {
+                                    dispatch(setSearchText(item));
+                                    navigate("/browse");
+                                }}
+                                variant="outline"
+                                className="rounded-full bg-purple-600 text-white hover:bg-purple-700 border-none"
+                            >
+                                {item}
+                            </Button>
                         </div>
                     </CarouselItem>
                 ))}
