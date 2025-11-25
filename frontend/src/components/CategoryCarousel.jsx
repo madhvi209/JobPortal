@@ -26,10 +26,17 @@ export function CategoryCarousel() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     return (
-        <Carousel className="w-full max-w-xl mx-auto my-20">
+        <Carousel className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto my-10 sm:my-14 md:my-20">
             <CarouselContent>
                 {category.map((item, index) => (
-                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem
+                        key={index}
+                        className="
+                            basis-full
+                            sm:basis-1/2
+                            md:basis-1/3
+                            "
+                    >
                         <div className="p-1">
                             <Button
                                 onClick={() => {
@@ -37,7 +44,7 @@ export function CategoryCarousel() {
                                     navigate("/browse");
                                 }}
                                 variant="outline"
-                                className="rounded-full bg-purple-600 text-white hover:bg-purple-700 border-none"
+                                className="rounded-full bg-purple-600 text-white hover:bg-purple-700 border-none w-full text-xs sm:text-sm md:text-base"
                             >
                                 {item}
                             </Button>
