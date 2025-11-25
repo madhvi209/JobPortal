@@ -4,10 +4,10 @@ import { getAllJobs, getJobById, getJobByLoggedAdminUser, postJob } from "../con
  
 const router = express.Router();
 
-router.route("/postjob").post( isAuthenticated , postJob);
-router.route("/all").get( isAuthenticated , getAllJobs);
+router.route("/postjob").post(isAuthenticated, postJob);
+router.route("/all").get(getAllJobs);
 router.route("/getadminjobs").get(isAuthenticated, getJobByLoggedAdminUser);
-router.route("/:id").get(isAuthenticated, getJobById);
+router.route("/:id").get(getJobById);
 
 
 export default router;
