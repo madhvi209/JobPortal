@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Navbar from './shared/Navbar'
 import FilterCard from './FilterCard'
 import Job from './Job'
-import Footer from './shared/Footer'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -34,17 +33,25 @@ const Jobs = () => {
         }
     })
     return (
-        <div className='bg-gray-100 h-screen'>
+        <div className='bg-gray-100 min-h-screen'>
             <Navbar />
-            <div className='max-w-7xl mx-auto mt-5'>
-                <div className='flex gap-5'>
-                    <div className='w-[20%]'>
+            <div className='max-w-7xl mx-auto mt-5 px-2 md:px-4'>
+                <div className='flex flex-col md:flex-row gap-5'>
+                    <div className='w-full md:w-[20%] mb-5 md:mb-0'>
                         <FilterCard />
                     </div>
                     {
                         filterJobs?.length <= 0 ? <Jobnotfound /> : (
-                            <div className='flex-1 h-[88vh] overflow-y-auto  no-scrollbar pb-5'>
-                                <div className='grid grid-cols-3 gap-4'>
+                            <div className='flex-1 h-[80vh] md:h-[88vh] overflow-y-auto no-scrollbar pb-5'>
+                                <div
+                                  className="
+                                    grid
+                                    grid-cols-1
+                                    sm:grid-cols-2
+                                    lg:grid-cols-3
+                                    gap-4
+                                  "
+                                >
                                     {
                                         filterJobs && filterJobs?.map((job) => (
                                             <motion.div
@@ -58,17 +65,14 @@ const Jobs = () => {
                                             </motion.div>
                                         ))
                                     }
-
                                 </div>
                             </div>
                         )
                     }
-
-                </div> 
+                </div>
             </div>
         </div>
-
-            )
+    )
 }
 
-            export default Jobs
+export default Jobs

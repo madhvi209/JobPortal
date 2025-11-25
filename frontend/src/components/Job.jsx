@@ -18,34 +18,42 @@ const Job = ({ job }) => {
     }
  
     return (
-        <div className='p-5 rounded-md shadow-xl bg-white border border-gray-100'>
-            <div className='flex items-center justify-between'>
-                <p className='text-sm text-gray-500'>{daysAgoFunction(job?.createdAt) === 0 ? 'Today' : `${daysAgoFunction(job?.createdAt)} days ago`}</p>
-                <Button size="icon" className="rounded-full" variant="secondary"><Bookmark /></Button>
+        <div className='p-5 rounded-md shadow-xl bg-white border border-gray-100 w-full max-w-lg mx-auto sm:max-w-full md:max-w-md lg:max-w-lg'>
+            {/* Responsive header: stack on mobile, row on larger */}
+            <div className='flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between'>
+                <p className='text-sm text-gray-500'>
+                    {daysAgoFunction(job?.createdAt) === 0 ? 'Today' : `${daysAgoFunction(job?.createdAt)} days ago`}
+                </p>
+                <Button size="icon" className="rounded-full self-end sm:self-auto" variant="secondary">
+                    <Bookmark />
+                </Button>
             </div>
-            <div className='flex items-center gap-2 my-2'>
-                <Button size='icon' variant="outline" className="p-6">
+            {/* Responsive layout for logo and company info */}
+            <div className='flex flex-col sm:flex-row sm:items-center gap-2 my-2'>
+                <Button size='icon' variant="outline" className="p-4 sm:p-6 self-center sm:self-auto">
                     <Avatar>
                         <AvatarImage src={job?.company?.logo} />
                     </Avatar>
                 </Button>
-                <div>
+                <div className="flex flex-col items-center sm:items-start">
                     <h1 className='font-medium text-lg'>{job?.company?.name}</h1>
                     <p className='text-sm text-gray-500'>India</p>
                 </div>
             </div>
             <div>
-                <h1 className='font-bold text-lg my-2'>{job?.title}</h1>
-                <p className='text-sm text-gray-600'>{job?.description}</p>
+                <h1 className='font-bold text-lg my-2 text-center sm:text-left'>{job?.title}</h1>
+                <p className='text-sm text-gray-600 text-center sm:text-left'>{job?.description}</p>
             </div>
-            <div className='flex items-center gap-2 mt-4'>
+            {/* Stack badges on mobile, row on larger screens */}
+            <div className='flex flex-col sm:flex-row items-center gap-2 mt-4'>
                 <Badge className={'text-blue-700 font-bold'} variant={'ghost'}>{job?.position} positons</Badge>
                 <Badge className={'text-[#F83002] font-bold'} variant={'ghost'}>{job?.jobType}</Badge>
                 <Badge className={'text-[#7209b7] font-bold'} variant={'ghost'}>{job?.salary}LPA</Badge>
             </div>
-            <div className='flex items-center gap-4 mt-4'>
-                <Button onClick={() => navigate(`/description/${job?._id}`)} variant="outline" className="rounded-lg">Details</Button>
-                <Button className="bg-[#7209b7] rounded-lg">Save For Later</Button>
+            {/* Buttons stack on mobile, row on larger */}
+            <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-4 mt-4'>
+                <Button onClick={() => navigate(`/description/${job?._id}`)} variant="outline" className="rounded-lg w-full sm:w-auto">Details</Button>
+                <Button className="bg-[#7209b7] rounded-lg w-full sm:w-auto">Save For Later</Button>
             </div>
             <div>
                 <ApplyJobDialog open={open} setOpen={setOpen} />
